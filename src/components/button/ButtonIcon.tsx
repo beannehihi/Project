@@ -11,7 +11,7 @@ export const ButtonIcon: React.FC<ButtonIcon> = ({iconName, buttonText}) => {
   return (
     <TouchableOpacity style={styles.button}>
       <Text style={styles.text}>{buttonText}</Text>
-      <Icons name={iconName} size={25} color={'white'} />
+      <Icons style={styles.icons} name={iconName} size={25} color={'white'} />
     </TouchableOpacity>
   );
 };
@@ -27,8 +27,11 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontWeight: '800',
+    fontSize: 19,
     marginRight: 5,
+  },
+  icons: {
+    fontSize: 35,
   },
 });
