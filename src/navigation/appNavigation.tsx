@@ -17,7 +17,7 @@ export const AppNavigation = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle={'light-content'} backgroundColor={'#000'} />
-      <Stack.Navigator initialRouteName="WelcomeScreen">
+      <Stack.Navigator initialRouteName="CameraScreen">
         <Stack.Screen
           name="OnBoarding"
           options={{headerShown: false}}

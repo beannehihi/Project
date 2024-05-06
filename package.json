@@ -25,6 +25,7 @@
     "react-native-screens": "^3.30.1",
     "react-native-svg": "^15.1.0",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-vision-camera": "^4.0.2",
     "tailwindcss-react-native": "^1.7.10"
   },
   "devDependencies": {
