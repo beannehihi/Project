@@ -8,9 +8,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
 export const LoginScreen: React.FC = () => {
+  const navigation = useNavigation();
   const [usePhoneNumber, setUsePhoneNumber] = React.useState<boolean>(false);
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [phoneNumber, setPhoneNumber] = React.useState<string>('');
   const fadeAnim = useSharedValue(1);
 
   const handleLoginEmail = () => {
@@ -33,10 +38,19 @@ export const LoginScreen: React.FC = () => {
     };
   });
 
+  const handleContinue = () => {
+    if (usePhoneNumber) {
+      navigation.navigate('OTP'); // Replace 'OTPScreen' with the name of your OTP screen
+    }
+  };
+
+  const isFormComplete = usePhoneNumber
+    ? phoneNumber.length === 10
+    : email !== '' && email.includes('.com') && password !== '';
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <BackBtn />
-
       <Animated.View
         style={[animatedStyles]}
         className="flex-1 justify-center items-center px-6 pt-10">
@@ -47,13 +61,28 @@ export const LoginScreen: React.FC = () => {
                 Tài khoản của bạn là gì?
               </Text>
             </View>
-            <InputWithIcon placeholder="Your Email" iconName="mail" />
-            <InputWithIcon placeholder="Password" iconName="lock" />
+            <InputWithIcon
+              placeholder="Địa chỉ Email"
+              iconName="mail"
+              keyboardType="default"
+              onChangeText={setEmail}
+            />
+            <InputWithIcon
+              placeholder="Mật khẩu"
+              iconName="lock"
+              keyboardType="default"
+              isPassword={true}
+              onChangeText={setPassword}
+            />
             <Button
               title="sử dụng số điện thoại thay cho cách này"
               onPress={handleLoginPhone}
-              style="py-2 px-3 bg-neutral-700 rounded-full "
-              textStyle="font-bold text-white text-sm"
+              style={{
+                paddingVertical: 9,
+                paddingHorizontal: 12,
+                backgroundColor: 'rgb(64 64 64)',
+              }}
+              textStyle={{fontSize: 14}}
             />
           </>
         ) : (
@@ -63,12 +92,23 @@ export const LoginScreen: React.FC = () => {
                 Số điện thoại của bạn là gì?
               </Text>
             </View>
-            <InputWithIcon placeholder="Your Phone number" iconName="phone" />
+
+            <InputWithIcon
+              placeholder="Số điện thoại"
+              iconName="phone"
+              keyboardType="phone-pad"
+              onChangeText={setPhoneNumber}
+            />
+
             <Button
               title="sử dụng email thay cho cách này"
               onPress={handleLoginEmail}
-              style="py-2 px-3 bg-neutral-700 rounded-full"
-              textStyle="font-bold text-white text-sm"
+              style={{
+                paddingVertical: 9,
+                paddingHorizontal: 12,
+                backgroundColor: 'rgb(64 64 64)',
+              }}
+              textStyle={{fontSize: 14}}
             />
           </>
         )}
@@ -81,7 +121,13 @@ export const LoginScreen: React.FC = () => {
           <Text className="text-white">Chính sách quyền riêng tư</Text> của
           chúng tôi
         </Text>
-        <ButtonIcon iconName="arrow-right-alt" buttonText="Tiếp tục" />
+        <ButtonIcon
+          style={{backgroundColor: '#6D28D9'}}
+          iconName="arrow-right-alt"
+          buttonText="Tiếp tục"
+          onPress={handleContinue}
+          disabled={!isFormComplete}
+        />
       </View>
     </SafeAreaView>
   );

@@ -37,14 +37,13 @@ export const WelcomeScreen = () => {
           <Button
             title="Tạo một tài khoản"
             onPress={() => navigation.navigate('Register')}
-            style="py-4 px-6 bg-purple-900 rounded-full mb-3"
-            textStyle="font-bold text-white text-lg"
+            style={{}}
           />
           <Button
             title="Đăng nhập"
             onPress={() => navigation.navigate('Login')}
-            style="items-center"
-            textStyle="font-bold text-white text-base"
+            style={{backgroundColor: 'black', paddingVertical: 1}}
+            textStyle={{fontSize: 16}}
           />
         </View>
       </View>

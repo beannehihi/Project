@@ -3,8 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {
   LoginScreen,
   RegisterScreen,
-  onBoarding,
+  OnBoarding,
   WelcomeScreen,
+  OtpVerifyScreen,
+  CameraScreen,
 } from '../screens/index';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StatusBar} from 'react-native';
@@ -19,7 +21,7 @@ export const AppNavigation = () => {
         <Stack.Screen
           name="OnBoarding"
           options={{headerShown: false}}
-          component={onBoarding}
+          component={OnBoarding}
         />
         <Stack.Screen
           name="WelcomeScreen"
@@ -32,9 +34,19 @@ export const AppNavigation = () => {
           component={LoginScreen}
         />
         <Stack.Screen
+          name="OTP"
+          options={{headerShown: false}}
+          component={OtpVerifyScreen}
+        />
+        <Stack.Screen
           name="Register"
           options={{headerShown: false}}
           component={RegisterScreen}
+        />
+        <Stack.Screen
+          name="CameraScreen"
+          options={{headerShown: false}}
+          component={CameraScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

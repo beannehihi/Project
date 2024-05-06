@@ -4,7 +4,7 @@ import Onboarding from 'react-native-onboarding-swiper';
 import LottieView from 'lottie-react-native';
 import {useNavigation} from '@react-navigation/native';
 
-export const onBoarding = () => {
+export const OnBoarding = () => {
   const navigation = useNavigation();
 
   const handleNext = () => {
