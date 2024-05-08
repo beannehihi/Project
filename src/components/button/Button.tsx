@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  ViewStyle,
-  StyleSheet,
-  TextStyle,
-} from 'react-native';
+import {TouchableOpacity, Text, View, ViewStyle, TextStyle} from 'react-native';
+import {styles} from './styles';
 
 type ButtonProps = {
   title: string;
@@ -29,21 +23,3 @@ export const Button: React.FC<ButtonProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
-  button: {
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    backgroundColor: '#6D28D9',
-    borderRadius: 9999,
-    marginBottom: 12,
-  },
-  text: {
-    fontWeight: 'bold',
-    color: '#fff',
-    fontSize: 18,
-  },
-});
